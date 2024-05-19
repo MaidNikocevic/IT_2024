@@ -1,0 +1,46 @@
+﻿@model Lab3Real.Models.Doctor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <p>Doctor's patients:</p>
+    <ul>
+        @foreach(var e in Model.patients)
+            {
+                <li>
+                    @Html.ActionLink(e.Name,"Details/"+e.Id,"Patients")
+                </li>
+            }
+    </ul>
+</div>
+<p>
+    @Html.ActionLink("Add Patient","InsertNewPatient", new { id = Model.Id })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
